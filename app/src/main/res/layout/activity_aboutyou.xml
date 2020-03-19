@@ -6,6 +6,9 @@
     android:background="#fff">
 
     <ScrollView
+        android:layout_above="@id/continueButton"
+        android:id="@+id/scrollView"
+        android:fillViewport="true"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scrollbars="none">
@@ -37,6 +40,7 @@
 
 
             <RadioGroup
+                android:id="@+id/usertype"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="15dp"
@@ -47,6 +51,7 @@
                 android:weightSum="2">
 
                 <RadioButton
+                    android:id="@+id/fitnessRadioBtn"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -58,6 +63,7 @@
                     android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
 
                 <RadioButton
+                    android:id="@+id/personalRadioBtn"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -77,6 +83,7 @@
                 android:background="#32969696" />
 
             <RadioGroup
+                android:id="@+id/gender"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="15dp"
@@ -87,6 +94,7 @@
                 android:weightSum="2">
 
                 <RadioButton
+                    android:id="@+id/maleRadioButton"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -98,6 +106,7 @@
                     android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
 
                 <RadioButton
+                    android:id="@+id/femaleRadioButton"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -116,20 +125,19 @@
                 android:background="#32969696" />
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/fullnameET"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="15dp">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/emailET"
+                    android:id="@+id/fullnameET"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:layout_marginTop="4dp"
                     android:background="#fff"
                     android:hint="Full Name"
                     android:inputType="textPersonName"
-                    android:maxLength="10"
+                    android:maxLines="1"
                     android:textColorHint="#4A4A4A" />
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -145,21 +153,20 @@
                 android:layout_margin="15dp">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/mobileNumberET"
+                    android:id="@+id/emailET"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:layout_marginTop="4dp"
                     android:background="#fff"
                     android:hint="Email"
                     android:inputType="textEmailAddress"
-                    android:maxLength="10"
+                    android:maxLines="1"
                     android:textColorHint="#4A4A4A" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:layout_marginBottom="100dp"
                 android:background="#32969696" />
         </LinearLayout>
     </ScrollView>

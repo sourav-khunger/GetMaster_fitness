@@ -2,10 +2,10 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="#fff"
     android:orientation="vertical"
-    android:fitsSystemWindows="true"
-    >
+    android:fitsSystemWindows="true">
 
 
     <LinearLayout
@@ -40,17 +40,37 @@
             android:layout_marginTop="15dp"
             android:text="Country Code"
             android:textColor="@color/textColor" />
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <com.hbb20.CountryCodePicker
+        android:visibility="visible"
+        android:id="@+id/countryCodePicker"
+        app:ccp_showFlag="false"
+        app:ccp_areaCodeDetectedCountry="true"
+        app:ccpDialog_showNameCode="true"
+        app:ccp_showFullName="false"
+        app:ccp_showPhoneCode="true"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"/>
+    <TextView
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:background="#fff"
+        android:id="@+id/country"
+        android:visibility="visible"
+        android:gravity="center_vertical"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:drawableRight="@drawable/up_and_down"
+        android:text="United Arab Emirates (+971)"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textColor="#4A4A4A" />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+</RelativeLayout>
 
-            android:layout_marginLeft="15dp"
-            android:layout_marginRight="15dp"
-            android:drawableRight="@drawable/up_and_down"
-            android:text="United Arab Emirates (+971)"
-            android:textAppearance="@style/TextAppearance.AppCompat.Large"
-            android:textColor="#4A4A4A" />
 
         <View
             android:layout_width="match_parent"
@@ -75,6 +95,11 @@
                 android:hint="Mobile Number"
                 android:textColorHint="#4A4A4A" />
         </com.google.android.material.textfield.TextInputLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#32969696" />
     </LinearLayout>
 
     <LinearLayout

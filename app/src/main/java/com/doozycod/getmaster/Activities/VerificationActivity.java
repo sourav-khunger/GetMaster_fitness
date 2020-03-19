@@ -23,7 +23,6 @@ public class VerificationActivity extends AppCompatActivity implements OTPListen
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_verification);
-        getSupportActionBar().hide();
 
 //        mOtpTextView = findViewById(R.id.tv_otp);
         otpView = findViewById(R.id.otp);

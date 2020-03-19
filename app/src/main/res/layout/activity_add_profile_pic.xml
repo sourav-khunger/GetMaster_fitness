@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#fff"
     tools:context=".Activities.AddProfilePicActivity">
 
     <LinearLayout
@@ -11,6 +13,7 @@
         android:orientation="vertical">
 
         <TextView
+            android:id="@+id/headerTxt"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="25dp"
@@ -21,6 +24,7 @@
             android:textStyle="bold" />
 
         <TextView
+            android:id="@+id/weTxt"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
@@ -29,38 +33,96 @@
             android:textColor="#4A4A4A" />
     </LinearLayout>
 
-    <ImageView
-        android:id="@+id/selectPicButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:src="@drawable/choose_library" />
 
     <TextView
+        android:id="@+id/replaceTxt"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/selectPicButton"
+        android:layout_below="@id/selectPic"
         android:layout_marginTop="15dp"
         android:gravity="center_horizontal"
+        android:letterSpacing="0"
         android:text="Choose from Library"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         android:textColor="#4A4A4A" />
 
-    <ImageView
-        android:id="@+id/backBTN"
-        android:layout_margin="25dp"
-        android:layout_width="32dp"
-        android:layout_height="32dp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentBottom="true"
-        android:src="@drawable/left_arrow2x" />
+    <LinearLayout
+        android:id="@+id/selectPic"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:orientation="vertical">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="2dp"
+            app:cardCornerRadius="25dp"
+            app:cardElevation="0dp">
+
+
+
+            <ImageView
+                android:id="@+id/selectPicButton"
+                android:layout_width="179dp"
+                android:layout_height="247dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/choose_library" />
+            <ImageView
+                android:id="@+id/gredient"
+                android:visibility="gone"
+                android:layout_width="179dp"
+                android:layout_height="247dp"
+                android:background="@drawable/gredient"/>
+            <TextView
+                android:id="@+id/userNameTxt"
+                android:text="Jennifer \nRicardson"
+                android:textColor="#fff"
+                android:visibility="gone"
+                android:layout_gravity="bottom|start"
+                android:layout_width="wrap_content"
+                android:textStyle="bold"
+                android:layout_marginLeft="10dp"
+                android:layout_marginBottom="20dp"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:layout_height="wrap_content"/>
+            <TextView
+                android:layout_gravity="bottom|start"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        </androidx.cardview.widget.CardView>
+
+        <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/profile_image"
+            android:layout_width="178dp"
+            android:layout_height="178dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="20dp"
+            android:src="@drawable/jennifer"
+            android:visibility="gone" />
+    </LinearLayout>
 
     <ImageView
+        android:id="@+id/backBTN"
+        android:layout_width="28dp"
+        android:layout_height="28dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="25dp"
+        android:src="@drawable/left_arrow2x" />
+
+    <Button
         android:id="@+id/continueButtonProfile"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="15dp"
         android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
-        android:src="@drawable/continue_grey" />
+        android:layout_gravity="bottom|end"
+        android:layout_margin="15dp"
+        android:background="@drawable/continue_grey"
+        android:text="Continue"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textColor="@android:color/white"
+        android:textStyle="bold" />
 </RelativeLayout>
