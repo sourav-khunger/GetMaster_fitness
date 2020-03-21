@@ -17,8 +17,18 @@ import android.widget.ScrollView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.doozycod.getmaster.CustomProgressBar;
+import com.doozycod.getmaster.Model.AboutUserModel;
+import com.doozycod.getmaster.Model.VerificationModel;
 import com.doozycod.getmaster.R;
+import com.doozycod.getmaster.Service.ApiService;
+import com.doozycod.getmaster.Service.ApiUtils;
+import com.doozycod.getmaster.SharedPreferenceMethod;
 import com.google.android.material.textfield.TextInputEditText;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class AboutyouActivity extends AppCompatActivity {
     TextInputEditText fullnameET, emailET;
@@ -26,9 +36,12 @@ public class AboutyouActivity extends AppCompatActivity {
     Button continueButton;
     RadioGroup userType, gender;
     RadioButton personalTrainerRadioButton, fitnessRadioButton, maleRadioButton, femaleRadioButton;
-    String usertype;
+    String usertype, genderType;
     boolean isUserTypeSelected = false;
     boolean isGenderSelected = false;
+    ApiService apiService;
+    SharedPreferenceMethod sharedPreferenceMethod;
+    CustomProgressBar customProgressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,14 +58,14 @@ public class AboutyouActivity extends AppCompatActivity {
         maleRadioButton = findViewById(R.id.maleRadioButton);
         femaleRadioButton = findViewById(R.id.femaleRadioButton);
 
+        sharedPreferenceMethod = new SharedPreferenceMethod(this);
+        apiService = ApiUtils.getAPIService();
         continueButton.setEnabled(false);
-
+        customProgressBar = new CustomProgressBar(this);
         userType.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
-                if (!personalTrainerRadioButton.isChecked() && !fitnessRadioButton.isChecked()) {
-                    Log.e("personalTrainer", "onCheckedChanged: Not checked!");
-                }
+
                 if (personalTrainerRadioButton.isChecked()) {
                     isUserTypeSelected = true;
                     usertype = "personal";
@@ -66,17 +79,14 @@ public class AboutyouActivity extends AppCompatActivity {
         gender.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
-                if (!maleRadioButton.isChecked() || !femaleRadioButton.isChecked()) {
-                    Log.e("maleRadioButton", "onCheckedChanged: Not checked!");
 
-                }
                 if (maleRadioButton.isChecked()) {
-                    usertype = "personal";
+                    usertype = "Personal Trainer";
                     isGenderSelected = true;
                 }
                 if (femaleRadioButton.isChecked()) {
                     isGenderSelected = true;
-                    usertype = "Fitness";
+                    usertype = "Fitness Lover";
 
                 }
             }
@@ -117,14 +127,14 @@ public class AboutyouActivity extends AppCompatActivity {
 
                         Log.e("onTextChanged", "onTextChanged: " + cs.length());
 
-                        if(isUserTypeSelected && isGenderSelected)
+                        if (isUserTypeSelected && isGenderSelected)
 
                             continueButton.setEnabled(true);
-                            continueButton.setBackgroundResource(R.drawable.continue_purple);
+                        continueButton.setBackgroundResource(R.drawable.continue_purple);
 
                     }
                 } else {
-                    if(!isValidEmail(emailET.getText().toString())){
+                    if (!isValidEmail(emailET.getText().toString())) {
                         continueButton.setEnabled(false);
                         continueButton.setBackgroundResource(R.drawable.continue_grey);
                     }
@@ -144,8 +154,32 @@ public class AboutyouActivity extends AppCompatActivity {
         continueButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (maleRadioButton.isChecked()) {
+                    genderType = "Male";
+                }
+                if (femaleRadioButton.isChecked()) {
+                    genderType = "Female";
+                } else {
+                    Log.e("Male", "onClick: select at least one");
+                }
+                if (personalTrainerRadioButton.isChecked()) {
+                    isUserTypeSelected = true;
+                    usertype = "Personal Trainer";
+                }
+                if (fitnessRadioButton.isChecked()) {
+                    isUserTypeSelected = true;
+                    usertype = "Fitness Lover";
+                } else {
+                    Log.e("Male", "onClick: select at least one");
+                }
+//                else {
+                customProgressBar.showProgress();
+                callApi(sharedPreferenceMethod.getId(), fullnameET.getText().toString(),
+                        emailET.getText().toString(), genderType, usertype);
+//                }
+                Log.e("continue", "onClick: " + usertype + genderType);
 //                if()
-                startActivity(new Intent(AboutyouActivity.this, AddProfilePicActivity.class));
+//                startActivity(new Intent(AboutyouActivity.this, AddProfilePicActivity.class));
             }
         });
         scrollView.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
@@ -167,6 +201,24 @@ public class AboutyouActivity extends AppCompatActivity {
         });
     }
 
+    void callApi(String id, String full_name, String email, String gender, String user_type) {
+        apiService.aboutYouApi(id, full_name, email, gender, user_type).enqueue(new Callback<VerificationModel>() {
+            @Override
+            public void onResponse(Call<VerificationModel> call, Response<VerificationModel> response) {
+                customProgressBar.hideProgress();
+                sharedPreferenceMethod.saveUserName(full_name);
+                Log.e("About You", "onResponse: " + response.toString());
+                Intent intent = new Intent(AboutyouActivity.this, AddProfilePicActivity.class);
+                startActivity(intent);
+            }
+
+            @Override
+            public void onFailure(Call<VerificationModel> call, Throwable t) {
+                customProgressBar.hideProgress();
+                Log.e("onFailure", "onFailure: " + t.getMessage());
+            }
+        });
+    }
 
     public static boolean isValidEmail(CharSequence target) {
         return (!TextUtils.isEmpty(target) && Patterns.EMAIL_ADDRESS.matcher(target).matches());

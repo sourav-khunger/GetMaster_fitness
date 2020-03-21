@@ -77,7 +77,6 @@
                 android:background="@drawable/gredient"/>
             <TextView
                 android:id="@+id/userNameTxt"
-                android:text="Jennifer \nRicardson"
                 android:textColor="#fff"
                 android:visibility="gone"
                 android:layout_gravity="bottom|start"
