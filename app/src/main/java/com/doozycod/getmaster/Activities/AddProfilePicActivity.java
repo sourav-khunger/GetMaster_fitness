@@ -119,8 +119,8 @@ public class AddProfilePicActivity extends AppCompatActivity {
                 Glide.with(AddProfilePicActivity.this).load(decodedByte).into(circleImageView);
                 Glide.with(AddProfilePicActivity.this).load(decodedByte).into(selectPicButton);
 
-                Toast.makeText(AddProfilePicActivity.this, "you can upload Photos soon!", Toast.LENGTH_SHORT).show();
-//                startActivity(new Intent(AddProfilePicActivity.this, UploadPhotos.class));
+//                Toast.makeText(AddProfilePicActivity.this, "you can upload Photos soon!", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(AddProfilePicActivity.this, UploadPhotos.class));
                 Log.e("Get Master", "onResponse: " + response.body().getAboutUserModel().getProfilePic());
             }
 

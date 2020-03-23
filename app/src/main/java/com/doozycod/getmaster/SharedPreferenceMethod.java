@@ -31,6 +31,18 @@ public class SharedPreferenceMethod {
         return sp.getString("id", "");
     }
 
+    public void saveInterestType(String interestedIn) {
+        sp = context.getSharedPreferences("getmaster_PREF", Context.MODE_PRIVATE);
+        SharedPreferences.Editor sp_editior = sp.edit();
+        sp_editior.putString("interestedIn", interestedIn);
+        sp_editior.commit();
+    }
+
+    public String getinterestedType() {
+        SharedPreferences sp = context.getSharedPreferences("getmaster_PREF", Context.MODE_PRIVATE);
+        return sp.getString("interestedIn", "");
+    }
+
     public String getUserName() {
         SharedPreferences sp = context.getSharedPreferences("getmaster_PREF", Context.MODE_PRIVATE);
         return sp.getString("userName", "");

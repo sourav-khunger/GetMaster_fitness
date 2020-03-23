@@ -178,6 +178,7 @@ public class AboutyouActivity extends AppCompatActivity {
                         emailET.getText().toString(), genderType, usertype);
 //                }
                 Log.e("continue", "onClick: " + usertype + genderType);
+                sharedPreferenceMethod.saveInterestType(usertype);
 //                if()
 //                startActivity(new Intent(AboutyouActivity.this, AddProfilePicActivity.class));
             }
