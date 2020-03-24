@@ -33,12 +33,12 @@ public class UploadPhotoAdapter extends RecyclerView.Adapter<UploadPhotoAdapter.
 
     @Override
     public void onBindViewHolder(@NonNull UploadPhotoAdapter.RecyclerHolder holder, int position) {
-        Glide.with(context).load(filepath.get(position)).into(holder.selectedImage);
+//        Glide.with(context).load(filepath.get(position)).into(holder.selectedImage);
     }
 
     @Override
     public int getItemCount() {
-        return filepath.size();
+        return 9;
     }
 
     class RecyclerHolder extends RecyclerView.ViewHolder {

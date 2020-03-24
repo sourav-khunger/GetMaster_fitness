@@ -89,7 +89,7 @@ public class VerificationActivity extends AppCompatActivity implements OTPListen
         apiService.verifyOTP(userId, otp).enqueue(new Callback<VerificationModel>() {
             @Override
             public void onResponse(Call<VerificationModel> call, Response<VerificationModel> response) {
-                Log.e("verify", "onResponse: " + response.toString() + "  " + response.message());
+                Log.e("verify", "onResponse: VERIFY " + response.toString() + "  " + response.message());
                 customProgressBar.hideProgress();
                 sharedPreferenceMethod.saveId(userId);
 //                Intent intent = new Intent(VerificationActivity.this, AboutUserModel.class);
@@ -100,6 +100,7 @@ public class VerificationActivity extends AppCompatActivity implements OTPListen
             @Override
             public void onFailure(Call<VerificationModel> call, Throwable t) {
                 customProgressBar.hideProgress();
+                Log.e("VERIFY", "onFailure: " + t.getMessage());
             }
         });
     }

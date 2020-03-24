@@ -34,6 +34,16 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/addTxt">
 
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="20dp"
+            android:background="#000"
+            android:visibility="gone" />
+
         <LinearLayout
             android:id="@+id/images_grid"
             android:layout_width="match_parent"
@@ -56,6 +66,7 @@
                     android:layout_weight="1">
 
                     <FrameLayout
+                        android:id="@+id/frame1"
                         android:layout_width="wrap_content"
                         android:layout_height="150dp">
 
@@ -70,15 +81,49 @@
 
                             <ImageView
                                 android:id="@+id/selectimg1"
-                                android:layout_width="106dp"
-                                android:layout_height="142dp"
+                                android:layout_width="101dp"
+                                android:layout_height="146dp"
+                                android:scaleType="centerCrop"
                                 android:src="@drawable/grey_bg" />
 
-                            <ImageView
-                                android:layout_width="44dp"
-                                android:layout_height="44dp"
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
                                 android:layout_gravity="center"
-                                android:src="@drawable/plus_" />
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:id="@+id/upload1"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:text="Uploading"
+                                    android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                                    android:textColor="#000"
+                                    android:visibility="gone" />
+
+                                <com.akexorcist.roundcornerprogressbar.RoundCornerProgressBar
+                                    android:layout_width="80dp"
+                                    android:layout_height="15dp"
+                                    android:layout_marginTop="5dp"
+                                    app:rcBackgroundColor="#D8D8D8"
+                                    app:rcMax="100"
+                                    android:visibility="gone"
+                                    android:id="@+id/progressbar"
+                                    app:rcProgress="0"
+                                    app:rcProgressColor="#4A4A4A"
+                                    app:rcRadius="20dp"
+                                    app:rcReverse="false"
+                                    />
+
+                                <ImageView
+                                    android:id="@+id/add1"
+                                    android:layout_width="44dp"
+                                    android:layout_height="44dp"
+                                    android:layout_gravity="center"
+                                    android:src="@drawable/plus_" />
+
+                            </LinearLayout>
                         </androidx.cardview.widget.CardView>
                     </FrameLayout>
 
@@ -98,6 +143,7 @@
                     android:layout_weight="1">
 
                     <FrameLayout
+                        android:id="@+id/frame2"
                         android:layout_width="wrap_content"
                         android:layout_height="150dp">
 
@@ -114,13 +160,45 @@
                                 android:id="@+id/selectimg2"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:scaleType="centerCrop"
                                 android:src="@drawable/grey_bg" />
 
-                            <ImageView
-                                android:layout_width="44dp"
-                                android:layout_height="44dp"
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
                                 android:layout_gravity="center"
-                                android:src="@drawable/plus_" />
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:id="@+id/upload2"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:text="Uploading"
+                                    android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                                    android:textColor="#000"
+                                    android:visibility="gone" />
+                                <com.akexorcist.roundcornerprogressbar.RoundCornerProgressBar
+                                    android:layout_width="80dp"
+                                    android:layout_height="15dp"
+                                    android:layout_marginTop="5dp"
+                                    app:rcBackgroundColor="#D8D8D8"
+                                    app:rcMax="100"
+                                    android:visibility="gone"
+                                    android:id="@+id/progressbar2"
+                                    app:rcProgress="0"
+                                    app:rcProgressColor="#4A4A4A"
+                                    app:rcRadius="20dp"
+                                    app:rcReverse="false"
+                                    />
+                                <ImageView
+                                    android:id="@+id/add2"
+                                    android:layout_width="44dp"
+                                    android:layout_height="44dp"
+                                    android:layout_gravity="center"
+                                    android:src="@drawable/plus_" />
+
+                            </LinearLayout>
                         </androidx.cardview.widget.CardView>
                     </FrameLayout>
 
@@ -140,6 +218,7 @@
                     android:layout_weight="1">
 
                     <FrameLayout
+                        android:id="@+id/frame3"
                         android:layout_width="wrap_content"
                         android:layout_height="150dp">
 
@@ -156,13 +235,45 @@
                                 android:id="@+id/selectimg3"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:scaleType="centerCrop"
                                 android:src="@drawable/grey_bg" />
 
-                            <ImageView
-                                android:layout_width="44dp"
-                                android:layout_height="44dp"
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
                                 android:layout_gravity="center"
-                                android:src="@drawable/plus_" />
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:id="@+id/upload3"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:text="Uploading"
+                                    android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                                    android:textColor="#000"
+                                    android:visibility="gone" />
+                                <com.akexorcist.roundcornerprogressbar.RoundCornerProgressBar
+                                    android:layout_width="80dp"
+                                    android:layout_height="15dp"
+                                    android:layout_marginTop="5dp"
+                                    app:rcBackgroundColor="#D8D8D8"
+                                    app:rcMax="100"
+                                    android:visibility="gone"
+                                    android:id="@+id/progressbar3"
+                                    app:rcProgress="0"
+                                    app:rcProgressColor="#4A4A4A"
+                                    app:rcRadius="20dp"
+                                    app:rcReverse="false"
+                                    />
+                                <ImageView
+                                    android:id="@+id/add3"
+                                    android:layout_width="44dp"
+                                    android:layout_height="44dp"
+                                    android:layout_gravity="center"
+                                    android:src="@drawable/plus_" />
+
+                            </LinearLayout>
                         </androidx.cardview.widget.CardView>
                     </FrameLayout>
 
@@ -189,6 +300,7 @@
                     android:layout_weight="1">
 
                     <FrameLayout
+                        android:id="@+id/frame4"
                         android:layout_width="wrap_content"
                         android:layout_height="150dp">
 
@@ -205,13 +317,45 @@
                                 android:id="@+id/selectimg4"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:scaleType="centerCrop"
                                 android:src="@drawable/grey_bg" />
 
-                            <ImageView
-                                android:layout_width="44dp"
-                                android:layout_height="44dp"
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
                                 android:layout_gravity="center"
-                                android:src="@drawable/plus_" />
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:id="@+id/upload4"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:text="Uploading"
+                                    android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                                    android:textColor="#000"
+                                    android:visibility="gone" />
+                                <com.akexorcist.roundcornerprogressbar.RoundCornerProgressBar
+                                    android:layout_width="80dp"
+                                    android:layout_height="15dp"
+                                    android:layout_marginTop="5dp"
+                                    app:rcBackgroundColor="#D8D8D8"
+                                    app:rcMax="100"
+                                    android:visibility="gone"
+                                    android:id="@+id/progressbar4"
+                                    app:rcProgress="0"
+                                    app:rcProgressColor="#4A4A4A"
+                                    app:rcRadius="20dp"
+                                    app:rcReverse="false"
+                                    />
+                                <ImageView
+                                    android:id="@+id/add4"
+                                    android:layout_width="44dp"
+                                    android:layout_height="44dp"
+                                    android:layout_gravity="center"
+                                    android:src="@drawable/plus_" />
+
+                            </LinearLayout>
                         </androidx.cardview.widget.CardView>
                     </FrameLayout>
 
@@ -231,6 +375,7 @@
                     android:layout_weight="1">
 
                     <FrameLayout
+                        android:id="@+id/frame5"
                         android:layout_width="wrap_content"
                         android:layout_height="150dp">
 
@@ -247,13 +392,45 @@
                                 android:id="@+id/selectimg5"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:scaleType="centerCrop"
                                 android:src="@drawable/grey_bg" />
 
-                            <ImageView
-                                android:layout_width="44dp"
-                                android:layout_height="44dp"
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
                                 android:layout_gravity="center"
-                                android:src="@drawable/grey_plus_" />
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:id="@+id/upload5"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:text="Uploading"
+                                    android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                                    android:textColor="#000"
+                                    android:visibility="gone" />
+                                <com.akexorcist.roundcornerprogressbar.RoundCornerProgressBar
+                                    android:layout_width="80dp"
+                                    android:layout_height="15dp"
+                                    android:layout_marginTop="5dp"
+                                    app:rcBackgroundColor="#D8D8D8"
+                                    app:rcMax="100"
+                                    android:visibility="gone"
+                                    android:id="@+id/progressbar5"
+                                    app:rcProgress="0"
+                                    app:rcProgressColor="#4A4A4A"
+                                    app:rcRadius="20dp"
+                                    app:rcReverse="false"
+                                    />
+                                <ImageView
+                                    android:id="@+id/add5"
+                                    android:layout_width="44dp"
+                                    android:layout_height="44dp"
+                                    android:layout_gravity="center"
+                                    android:src="@drawable/grey_plus_" />
+
+                            </LinearLayout>
                         </androidx.cardview.widget.CardView>
                     </FrameLayout>
 
@@ -273,6 +450,7 @@
                     android:layout_weight="1">
 
                     <FrameLayout
+                        android:id="@+id/frame6"
                         android:layout_width="wrap_content"
                         android:layout_height="150dp">
 
@@ -289,13 +467,45 @@
                                 android:id="@+id/selectimg6"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:scaleType="centerCrop"
                                 android:src="@drawable/grey_bg" />
 
-                            <ImageView
-                                android:layout_width="44dp"
-                                android:layout_height="44dp"
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
                                 android:layout_gravity="center"
-                                android:src="@drawable/grey_plus_" />
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:id="@+id/upload6"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:text="Uploading"
+                                    android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                                    android:textColor="#000"
+                                    android:visibility="gone" />
+                                <com.akexorcist.roundcornerprogressbar.RoundCornerProgressBar
+                                    android:layout_width="80dp"
+                                    android:layout_height="15dp"
+                                    android:layout_marginTop="5dp"
+                                    app:rcBackgroundColor="#D8D8D8"
+                                    app:rcMax="100"
+                                    android:visibility="gone"
+                                    android:id="@+id/progressbar6"
+                                    app:rcProgress="0"
+                                    app:rcProgressColor="#4A4A4A"
+                                    app:rcRadius="20dp"
+                                    app:rcReverse="false"
+                                    />
+                                <ImageView
+                                    android:id="@+id/add6"
+                                    android:layout_width="44dp"
+                                    android:layout_height="44dp"
+                                    android:layout_gravity="center"
+                                    android:src="@drawable/grey_plus_" />
+
+                            </LinearLayout>
                         </androidx.cardview.widget.CardView>
                     </FrameLayout>
 
@@ -322,6 +532,7 @@
                     android:layout_weight="1">
 
                     <FrameLayout
+                        android:id="@+id/frame7"
                         android:layout_width="wrap_content"
                         android:layout_height="150dp">
 
@@ -338,13 +549,45 @@
                                 android:id="@+id/selectimg7"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:scaleType="centerCrop"
                                 android:src="@drawable/grey_bg" />
 
-                            <ImageView
-                                android:layout_width="44dp"
-                                android:layout_height="44dp"
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
                                 android:layout_gravity="center"
-                                android:src="@drawable/grey_plus_" />
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:id="@+id/upload7"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:text="Uploading"
+                                    android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                                    android:textColor="#000"
+                                    android:visibility="gone" />
+                                <com.akexorcist.roundcornerprogressbar.RoundCornerProgressBar
+                                    android:layout_width="80dp"
+                                    android:layout_height="15dp"
+                                    android:layout_marginTop="5dp"
+                                    app:rcBackgroundColor="#D8D8D8"
+                                    app:rcMax="100"
+                                    android:visibility="gone"
+                                    android:id="@+id/progressbar7"
+                                    app:rcProgress="0"
+                                    app:rcProgressColor="#4A4A4A"
+                                    app:rcRadius="20dp"
+                                    app:rcReverse="false"
+                                    />
+                                <ImageView
+                                    android:id="@+id/add7"
+                                    android:layout_width="44dp"
+                                    android:layout_height="44dp"
+                                    android:layout_gravity="center"
+                                    android:src="@drawable/grey_plus_" />
+
+                            </LinearLayout>
                         </androidx.cardview.widget.CardView>
                     </FrameLayout>
 
@@ -364,6 +607,7 @@
                     android:layout_weight="1">
 
                     <FrameLayout
+                        android:id="@+id/frame8"
                         android:layout_width="wrap_content"
                         android:layout_height="150dp">
 
@@ -380,13 +624,45 @@
                                 android:id="@+id/selectimg8"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:scaleType="centerCrop"
                                 android:src="@drawable/grey_bg" />
 
-                            <ImageView
-                                android:layout_width="44dp"
-                                android:layout_height="44dp"
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
                                 android:layout_gravity="center"
-                                android:src="@drawable/grey_plus_" />
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:id="@+id/upload8"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:text="Uploading"
+                                    android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                                    android:textColor="#000"
+                                    android:visibility="gone" />
+                                <com.akexorcist.roundcornerprogressbar.RoundCornerProgressBar
+                                    android:layout_width="80dp"
+                                    android:layout_height="15dp"
+                                    android:layout_marginTop="5dp"
+                                    app:rcBackgroundColor="#D8D8D8"
+                                    app:rcMax="100"
+                                    android:visibility="gone"
+                                    android:id="@+id/progressbar8"
+                                    app:rcProgress="0"
+                                    app:rcProgressColor="#4A4A4A"
+                                    app:rcRadius="20dp"
+                                    app:rcReverse="false"
+                                    />
+                                <ImageView
+                                    android:id="@+id/add8"
+                                    android:layout_width="44dp"
+                                    android:layout_height="44dp"
+                                    android:layout_gravity="center"
+                                    android:src="@drawable/grey_plus_" />
+
+                            </LinearLayout>
                         </androidx.cardview.widget.CardView>
                     </FrameLayout>
 
@@ -406,6 +682,7 @@
                     android:layout_weight="1">
 
                     <FrameLayout
+                        android:id="@+id/frame9"
                         android:layout_width="wrap_content"
                         android:layout_height="150dp">
 
@@ -422,13 +699,45 @@
                                 android:id="@+id/selectimg9"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:scaleType="centerCrop"
                                 android:src="@drawable/grey_bg" />
 
-                            <ImageView
-                                android:layout_width="44dp"
-                                android:layout_height="44dp"
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
                                 android:layout_gravity="center"
-                                android:src="@drawable/grey_plus_" />
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:id="@+id/upload9"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:text="Uploading"
+                                    android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                                    android:textColor="#000"
+                                    android:visibility="gone" />
+                                <com.akexorcist.roundcornerprogressbar.RoundCornerProgressBar
+                                    android:layout_width="80dp"
+                                    android:layout_height="15dp"
+                                    android:layout_marginTop="5dp"
+                                    app:rcBackgroundColor="#D8D8D8"
+                                    app:rcMax="100"
+                                    android:visibility="gone"
+                                    android:id="@+id/progressbar9"
+                                    app:rcProgress="0"
+                                    app:rcProgressColor="#4A4A4A"
+                                    app:rcRadius="20dp"
+                                    app:rcReverse="false"
+                                    />
+                                <ImageView
+                                    android:id="@+id/add9"
+                                    android:layout_width="44dp"
+                                    android:layout_height="44dp"
+                                    android:layout_gravity="center"
+                                    android:src="@drawable/grey_plus_" />
+
+                            </LinearLayout>
                         </androidx.cardview.widget.CardView>
                     </FrameLayout>
 
@@ -444,13 +753,7 @@
             </LinearLayout>
         </LinearLayout>
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginRight="20dp" />
+
     </RelativeLayout>
 
     <ImageView
