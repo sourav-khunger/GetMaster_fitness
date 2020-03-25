@@ -13,18 +13,18 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="10dp"
-        android:text=""
+        android:text="You Speak"
         android:textColor="#000"
         android:textSize="40dp"
         android:textStyle="bold" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:layout_below="@+id/headerTxtIn"
-        android:id="@+id/interestListRV"
+        android:id="@+id/speakListRV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
     <ImageView
-        android:id="@+id/backBTNInterest"
+        android:id="@+id/backBTN"
         android:layout_width="28dp"
         android:layout_height="28dp"
         android:layout_alignParentLeft="true"
@@ -34,7 +34,7 @@
         android:src="@drawable/left_arrow2x" />
 
     <Button
-        android:id="@+id/continueButtonInterest"
+        android:id="@+id/continueButtonLangBTN"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
@@ -43,7 +43,7 @@
         android:layout_marginRight="25dp"
         android:layout_marginBottom="20dp"
         android:background="@drawable/continue_grey"
-        android:text="Continue"
+        android:text="Finish"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:textColor="@android:color/white"
         android:textStyle="bold" />

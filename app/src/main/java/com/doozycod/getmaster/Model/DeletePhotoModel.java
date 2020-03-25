@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
-public class UserPhotosModel {
+public class DeletePhotoModel {
 
     @SerializedName("user_photos")
     @Expose
@@ -78,5 +78,4 @@ public class UserPhotosModel {
         }
 
     }
-
 }

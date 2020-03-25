@@ -757,7 +757,7 @@
     </RelativeLayout>
 
     <ImageView
-        android:id="@+id/backBTN"
+        android:id="@+id/backBTNUpload"
         android:layout_width="28dp"
         android:layout_height="28dp"
         android:layout_alignParentLeft="true"

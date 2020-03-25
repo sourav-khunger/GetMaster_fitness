@@ -1,6 +1,9 @@
 package com.doozycod.getmaster.Service;
 
 
+import com.doozycod.getmaster.Model.DeletePhotoModel;
+import com.doozycod.getmaster.Model.LanguageModel;
+import com.doozycod.getmaster.Model.UserInterestModel;
 import com.doozycod.getmaster.Model.UserPhotosModel;
 import com.doozycod.getmaster.Model.VerificationModel;
 import com.doozycod.getmaster.OtpModel;
@@ -38,10 +41,24 @@ public interface ApiService {
     @POST("photo/set.php")
     @FormUrlEncoded
     Call<UserPhotosModel> uploadPhotos(@Field("user_id") String id,
-                                       @Field("photo") String profile_pic);
+                                       @Field("photo") String photo);
 
     @GET("photo/get.php")
     Call<UserPhotosModel> getPhotos(@Field("user_id") String id,
                                     @Field("photo") String profile_pic);
+
+    @POST("photo/delete.php")
+    @FormUrlEncoded
+    Call<UserPhotosModel> deletePhotos(@Field("id") String id,
+                                       @Field("user_id") String user_id);
+
+    @POST("interest/set.php")
+    @FormUrlEncoded
+    Call<UserInterestModel> addInterest(@Field("user_id") String user_id,
+                                        @Field("interests") String interests);
+    @POST("language/set.php")
+    @FormUrlEncoded
+    Call<LanguageModel> addLanguage(@Field("user_id") String user_id,
+                                    @Field("languages") String languages);
 
 }
