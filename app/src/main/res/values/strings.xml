@@ -17,4 +17,10 @@
     <string name="add_profile_txt">We believe by adding a good profile picture\n you get 10 times more engagement</string>
     <string name="add_atleast">Add atleast 4 photos but we recommend 9 \nMake sure you upload your photos, \nNo irrelevant or inappropriate photos allowed.</string>
     <string name="ready_txt"> Great. Your profile is now ready. \nStart searching for trainers or your \nfitness buddies.</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="drawer_open">open</string>
+    <string name="drawer_close">close</string>
+    <string name="title_activity_home_navigation">HomeNavigation</string>
 </resources>

@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".Fragments.NavigationFragment">
+
+    <TextView
+        android:textColor="@color/blackText"
+        android:layout_margin="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Home"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#E6E6E6" />
+    <TextView
+        android:textColor="@color/blackText"
+        android:layout_margin="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Messages"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#E6E6E6" />
+    <TextView
+        android:textColor="@color/blackText"
+        android:layout_margin="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Favorite"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#E6E6E6" />
+    <TextView
+        android:textColor="@color/blackText"
+        android:layout_margin="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="View Profile"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#E6E6E6" />
+    <LinearLayout
+        android:gravity="center"
+        android:layout_margin="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_weight="1"
+            android:textColor="@color/blackText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Edit Profile, Photos and Account details"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+    <ImageView
+        android:src="@drawable/right_arrow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#E6E6E6" />
+    <TextView
+        android:textColor="@color/blackText"
+        android:layout_margin="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Contact Support"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#E6E6E6" />
+    <TextView
+        android:textColor="@color/blackText"
+        android:layout_margin="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Invite a friend or trainer"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#E6E6E6" />
+    <TextView
+        android:textColor="@color/blackText"
+        android:layout_margin="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Logout"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+
+
+</LinearLayout>

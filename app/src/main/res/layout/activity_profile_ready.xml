@@ -26,6 +26,7 @@
             android:layout_height="wrap_content"
             android:text="@string/ready_txt"/>
         <Button
+            android:id="@+id/exploreButton"
             android:layout_marginTop="20dp"
             android:layout_gravity="center_horizontal"
             android:textStyle="bold"
@@ -36,6 +37,7 @@
             android:layout_height="65dp"
             android:background="@drawable/purple_button"/>
         <Button
+            android:id="@+id/showProfileButton"
             android:text="Show my profile"
             android:textColor="#000"
             android:textStyle="bold"

@@ -9,9 +9,11 @@
         <item name="android:windowLightStatusBar">true</item>
         <item name="android:windowDrawsSystemBarBackgrounds">true</item>
     </style>
+
     <style name="MyRadioButtonStyle" parent="@android:style/Widget.CompoundButton.RadioButton">
         <item name="android:button">@drawable/radiobutton</item>
     </style>
+
     <style name="AppTheme.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>

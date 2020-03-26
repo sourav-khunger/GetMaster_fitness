@@ -2,6 +2,7 @@ package com.doozycod.getmaster.Service;
 
 
 import com.doozycod.getmaster.Model.DeletePhotoModel;
+import com.doozycod.getmaster.Model.ExploreModel;
 import com.doozycod.getmaster.Model.LanguageModel;
 import com.doozycod.getmaster.Model.UserInterestModel;
 import com.doozycod.getmaster.Model.UserPhotosModel;
@@ -60,5 +61,8 @@ public interface ApiService {
     @FormUrlEncoded
     Call<LanguageModel> addLanguage(@Field("user_id") String user_id,
                                     @Field("languages") String languages);
+    @POST("home/explore.php")
+    @FormUrlEncoded
+    Call<ExploreModel> getExplore(@Field("user_id") String user_id);
 
 }
