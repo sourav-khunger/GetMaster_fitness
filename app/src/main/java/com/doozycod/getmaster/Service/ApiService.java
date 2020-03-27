@@ -3,7 +3,10 @@ package com.doozycod.getmaster.Service;
 
 import com.doozycod.getmaster.Model.DeletePhotoModel;
 import com.doozycod.getmaster.Model.ExploreModel;
+import com.doozycod.getmaster.Model.FavoriteModel;
 import com.doozycod.getmaster.Model.LanguageModel;
+import com.doozycod.getmaster.Model.ProfileModel;
+import com.doozycod.getmaster.Model.ResponseModel;
 import com.doozycod.getmaster.Model.UserInterestModel;
 import com.doozycod.getmaster.Model.UserPhotosModel;
 import com.doozycod.getmaster.Model.VerificationModel;
@@ -44,9 +47,9 @@ public interface ApiService {
     Call<UserPhotosModel> uploadPhotos(@Field("user_id") String id,
                                        @Field("photo") String photo);
 
-    @GET("photo/get.php")
-    Call<UserPhotosModel> getPhotos(@Field("user_id") String id,
-                                    @Field("photo") String profile_pic);
+    @POST("photo/get.php")
+    @FormUrlEncoded
+    Call<UserPhotosModel> getPhotos(@Field("user_id") String id);
 
     @POST("photo/delete.php")
     @FormUrlEncoded
@@ -57,12 +60,34 @@ public interface ApiService {
     @FormUrlEncoded
     Call<UserInterestModel> addInterest(@Field("user_id") String user_id,
                                         @Field("interests") String interests);
+
     @POST("language/set.php")
     @FormUrlEncoded
     Call<LanguageModel> addLanguage(@Field("user_id") String user_id,
                                     @Field("languages") String languages);
+
     @POST("home/explore.php")
     @FormUrlEncoded
     Call<ExploreModel> getExplore(@Field("user_id") String user_id);
+
+    @POST("user/logout.php")
+    @FormUrlEncoded
+    Call<ResponseModel> logoutUser(@Field("id") String id, @Field("device_id") String deviceId);
+
+    @POST("favorite/get.php")
+    @FormUrlEncoded
+    Call<FavoriteModel> getFavoriteUsers(@Field("user_id") String id);
+
+    @POST("interest/get.php")
+    @FormUrlEncoded
+    Call<UserInterestModel> getInterests(@Field("user_id") String id);
+
+    @POST("language/get.php")
+    @FormUrlEncoded
+    Call<LanguageModel> getLanguages(@Field("user_id") String id);
+
+    @POST("user/profile.php")
+    @FormUrlEncoded
+    Call<ProfileModel> getProfile(@Field("id") String id);
 
 }

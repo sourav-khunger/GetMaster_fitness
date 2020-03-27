@@ -15,8 +15,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".Activities.HomeNavigation"
-            android:label="@string/title_activity_home_navigation"
+            android:name=".Activities.LoginActivity"
             android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity
             android:name=".Activities.Homepage"
@@ -31,7 +30,7 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".Activities.InterestedIn"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".Activities.UploadPhotos"
             android:theme="@style/AppTheme.NoActionBar" />

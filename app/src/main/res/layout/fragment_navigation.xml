@@ -1,15 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/childFrame"
     android:orientation="vertical"
     tools:context=".Fragments.NavigationFragment">
+<LinearLayout
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
     <TextView
+        android:id="@+id/homeNaviButton"
         android:textColor="@color/blackText"
         android:layout_margin="20dp"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Home"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
@@ -19,9 +25,10 @@
         android:layout_height="1dp"
         android:background="#E6E6E6" />
     <TextView
+        android:id="@+id/messageNaviButton"
         android:textColor="@color/blackText"
         android:layout_margin="20dp"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Messages"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
@@ -31,9 +38,10 @@
         android:layout_height="1dp"
         android:background="#E6E6E6" />
     <TextView
+        android:id="@+id/favoriteNaviButton"
         android:textColor="@color/blackText"
         android:layout_margin="20dp"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Favorite"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
@@ -43,9 +51,10 @@
         android:layout_height="1dp"
         android:background="#E6E6E6" />
     <TextView
+        android:id="@+id/profileNaviButton"
         android:textColor="@color/blackText"
         android:layout_margin="20dp"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="View Profile"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
@@ -60,9 +69,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <TextView
+            android:id="@+id/editDetailsNaviButton"
             android:layout_weight="1"
             android:textColor="@color/blackText"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="Edit Profile, Photos and Account details"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
@@ -77,9 +87,10 @@
         android:layout_height="1dp"
         android:background="#E6E6E6" />
     <TextView
+        android:id="@+id/supportNaviButton"
         android:textColor="@color/blackText"
         android:layout_margin="20dp"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Contact Support"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
@@ -89,9 +100,10 @@
         android:layout_height="1dp"
         android:background="#E6E6E6" />
     <TextView
+        android:id="@+id/inviteNaviButton"
         android:textColor="@color/blackText"
         android:layout_margin="20dp"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Invite a friend or trainer"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
@@ -101,12 +113,14 @@
         android:layout_height="1dp"
         android:background="#E6E6E6" />
     <TextView
+        android:id="@+id/logoutNaviButton"
         android:textColor="@color/blackText"
         android:layout_margin="20dp"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Logout"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
 
-
 </LinearLayout>
+
+</FrameLayout>

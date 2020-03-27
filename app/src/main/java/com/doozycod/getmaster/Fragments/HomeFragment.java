@@ -13,6 +13,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 
 import com.dalong.francyconverflow.FancyCoverFlow;
 import com.doozycod.getmaster.Adapter.RecentUserAdapter;
@@ -46,7 +47,7 @@ public class HomeFragment extends Fragment implements DiscreteScrollView.OnItemC
     private List<RecentUser> mlist = new ArrayList<>();
     ApiService apiService;
     SharedPreferenceMethod sharedPreferenceMethod;
-
+    LinearLayout favoriteHomeButton, homeButton, peopleButton, messageButton;
     List<FeaturedUser> mFancyCoverFlows = new ArrayList<>();
 
     private DiscreteScrollView mGalleryRecyclerView;
@@ -64,6 +65,10 @@ public class HomeFragment extends Fragment implements DiscreteScrollView.OnItemC
         apiService = ApiUtils.getAPIService();
         getuserList();
 
+        favoriteHomeButton = view.findViewById(R.id.favoriteHomeButton);
+        homeButton = view.findViewById(R.id.homePageButton);
+        peopleButton = view.findViewById(R.id.peopleButton);
+        messageButton = view.findViewById(R.id.messageHomeButton);
         recyclerView = view.findViewById(R.id.recentUsersList);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
@@ -77,6 +82,42 @@ public class HomeFragment extends Fragment implements DiscreteScrollView.OnItemC
         mGalleryRecyclerView.setItemTransformer(new ScaleTransformer.Builder()
                 .setMinScale(0.9f)
                 .build());
+        homeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+//                getFragmentManager().beginTransaction()
+//                        .replace(R.id.frameLayout, new HomeFragment(), "")
+//                        .addToBackStack("")
+//                        .commit();
+            }
+        });
+        favoriteHomeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                getFragmentManager().beginTransaction()
+                        .replace(R.id.frameLayout, new FavoriteFragment(), "")
+                        .addToBackStack("")
+                        .commit();
+            }
+        });
+        peopleButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+//                getFragmentManager().beginTransaction()
+//                        .replace(R.id.frameLayout, new FavoriteFragment(), "")
+//                        .addToBackStack("")
+//                        .commit();
+            }
+        });
+        messageButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+//                getFragmentManager().beginTransaction()
+//                        .replace(R.id.frameLayout, new FavoriteFragment(), "")
+//                        .addToBackStack("")
+//                        .commit();
+            }
+        });
         return view;
     }
 

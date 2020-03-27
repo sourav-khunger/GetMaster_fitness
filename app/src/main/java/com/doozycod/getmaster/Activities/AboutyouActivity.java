@@ -19,6 +19,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.doozycod.getmaster.CustomProgressBar;
 import com.doozycod.getmaster.Model.AboutUserModel;
+import com.doozycod.getmaster.Model.ProfileModel;
 import com.doozycod.getmaster.Model.VerificationModel;
 import com.doozycod.getmaster.R;
 import com.doozycod.getmaster.Service.ApiService;
@@ -117,7 +118,11 @@ public class AboutyouActivity extends AppCompatActivity {
 //                Toast.makeText(getApplicationContext(), "after text change", Toast.LENGTH_LONG).show();
             }
         });
-
+        if (getIntent().hasExtra("frag")) {
+            customProgressBar.showProgress();
+            getAboutYou("6");
+            continueButton.setEnabled(true);
+        }
         emailET.addTextChangedListener(new TextWatcher() {
             @Override
             public void onTextChanged(CharSequence cs, int arg1, int arg2, int arg3) {
@@ -198,6 +203,42 @@ public class AboutyouActivity extends AppCompatActivity {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
                 return true;
+            }
+        });
+    }
+
+    private void getAboutYou(String id) {
+        apiService.getProfile(id).enqueue(new Callback<ProfileModel>() {
+            @Override
+            public void onResponse(Call<ProfileModel> call, Response<ProfileModel> response) {
+                customProgressBar.hideProgress();
+                if (response.body().getUserData().getUserType().contains(fitnessRadioButton.getText())) {
+                    fitnessRadioButton.setChecked(true);
+                }
+                if (response.body().getUserData().getUserType().contains(personalTrainerRadioButton.getText())) {
+                    personalTrainerRadioButton.setChecked(true);
+                }
+                if (response.body().getUserData().getFullName().contains(" ")) {
+                    String fullName = response.body().getUserData().getFullName().replace(" ", "\n");
+                    fullnameET.setText(fullName);
+
+                } else {
+                    fullnameET.setText(response.body().getUserData().getFullName());
+
+                }
+                emailET.setText(response.body().getUserData().getEmail());
+                if (response.body().getUserData().getGender().contains(maleRadioButton.getText())) {
+                    maleRadioButton.setChecked(true);
+                }
+                if (response.body().getUserData().getGender().contains(femaleRadioButton.getText())) {
+                    femaleRadioButton.setChecked(true);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ProfileModel> call, Throwable t) {
+                customProgressBar.hideProgress();
+                Log.e("Get Details", "onFailure: " + t.getMessage());
             }
         });
     }

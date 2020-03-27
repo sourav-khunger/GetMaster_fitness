@@ -17,6 +17,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.doozycod.getmaster.Adapter.InterestAdapter;
 import com.doozycod.getmaster.CustomProgressBar;
+import com.doozycod.getmaster.Model.LanguageModel;
 import com.doozycod.getmaster.Model.UserInterestModel;
 import com.doozycod.getmaster.R;
 import com.doozycod.getmaster.Service.ApiService;
@@ -39,6 +40,7 @@ public class InterestedIn extends AppCompatActivity implements InterestAdapter.C
     String interestArray[] = {"Strength Training", "Muscle Training", "Transformation and Weight loss",
             "Zumba", "Aerobics", "Kickboxing", "Yoga", "Pilates"};
     List<String> list = new ArrayList<>();
+    List<String> listPivot = new ArrayList<>();
     String interest = "";
     ApiService apiService;
     CustomProgressBar customProgressBar;
@@ -54,6 +56,8 @@ public class InterestedIn extends AppCompatActivity implements InterestAdapter.C
         continueButtonInterest = findViewById(R.id.continueButtonInterest);
         customProgressBar = new CustomProgressBar(this);
         sharedPreferenceMethod = new SharedPreferenceMethod(this);
+        apiService = ApiUtils.getAPIService();
+
         if (sharedPreferenceMethod.getinterestedType().equals("Fitness Lover")) {
             headerTxt.setText("Interested in");
         }
@@ -63,12 +67,17 @@ public class InterestedIn extends AppCompatActivity implements InterestAdapter.C
         recyclerView = findViewById(R.id.interestListRV);
         recyclerView.setHasFixedSize(true);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
+
         interestAdapter = new InterestAdapter(this, interestArray);
+
+        interestAdapter.setListner(this::onCheckListener);
+
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(interestAdapter);
-
-        apiService = ApiUtils.getAPIService();
-        interestAdapter.setListner(this::onCheckListener);
+        if (getIntent().hasExtra("frag")) {
+            customProgressBar.showProgress();
+            getInterestApi("6");
+        }
         backBTN.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -78,10 +87,35 @@ public class InterestedIn extends AppCompatActivity implements InterestAdapter.C
         continueButtonInterest.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                interest = TextUtils.join(", ", list);
+                if (getIntent().hasExtra("frag")) {
+                    interest = TextUtils.join(", ", listPivot);
+
+                } else {
+                    interest = TextUtils.join(", ", list);
+                }
                 customProgressBar.showProgress();
                 InterestApi(interest);
                 Log.e("Interest", "onClick: " + interest);
+            }
+        });
+    }
+
+    private void getInterestApi(String id) {
+        apiService.getInterests(id).enqueue(new Callback<UserInterestModel>() {
+            @Override
+            public void onResponse(Call<UserInterestModel> call, Response<UserInterestModel> response) {
+                customProgressBar.hideProgress();
+                list = response.body().getUserInterests().getInterests();
+                interestAdapter = new InterestAdapter(InterestedIn.this, interestArray, list, true);
+                recyclerView.setAdapter(interestAdapter);
+                interestAdapter.setListner(InterestedIn.this);
+
+            }
+
+            @Override
+            public void onFailure(Call<UserInterestModel> call, Throwable t) {
+                customProgressBar.hideProgress();
+                Log.e("Interested Get", "onFailure: " + t.getMessage());
             }
         });
     }
@@ -93,7 +127,12 @@ public class InterestedIn extends AppCompatActivity implements InterestAdapter.C
                 customProgressBar.hideProgress();
 
                 Log.e("interest api", "onResponse: " + response.body().getUserInterests().getResponse());
-                startActivity(new Intent(InterestedIn.this, SelectLanguages.class));
+                if (getIntent().hasExtra("frag")) {
+
+                } else {
+                    startActivity(new Intent(InterestedIn.this, SelectLanguages.class));
+
+                }
             }
 
             @Override
@@ -108,19 +147,34 @@ public class InterestedIn extends AppCompatActivity implements InterestAdapter.C
     @Override
 
     public void onCheckListener(List<String> interest) {
-        if (interest.size() == 0) {
-            continueButtonInterest.setText("Continue");
-            continueButtonInterest.setBackground(getDrawable(R.drawable.continue_grey));
-            continueButtonInterest.setEnabled(false);
+        listPivot = interest;
 
-        }
-        if (interest.size() > 0) {
-            continueButtonInterest.setText("1 more step");
-            continueButtonInterest.setBackground(getDrawable(R.drawable.continue_purple));
-            continueButtonInterest.setEnabled(true);
+        if (getIntent().hasExtra("frag")) {
+            if (interest.size() == 0) {
+                continueButtonInterest.setText("Continue");
+                continueButtonInterest.setBackground(getDrawable(R.drawable.continue_grey));
+                continueButtonInterest.setEnabled(false);
 
+            } else {
+                continueButtonInterest.setText("Update");
+                continueButtonInterest.setBackground(getDrawable(R.drawable.continue_purple));
+                continueButtonInterest.setEnabled(true);
+            }
+        } else {
+            if (interest.size() == 0) {
+                continueButtonInterest.setText("Continue");
+                continueButtonInterest.setBackground(getDrawable(R.drawable.continue_grey));
+                continueButtonInterest.setEnabled(false);
+
+            }
+            if (interest.size() > 0) {
+                continueButtonInterest.setText("1 more step");
+                continueButtonInterest.setBackground(getDrawable(R.drawable.continue_purple));
+                continueButtonInterest.setEnabled(true);
+
+            }
         }
-        list = interest;
+
         Log.e("Interest", "onCheckListener: " + list.size());
     }
 }

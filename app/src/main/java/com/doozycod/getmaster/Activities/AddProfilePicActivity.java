@@ -20,6 +20,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.bumptech.glide.Glide;
 import com.doozycod.getmaster.CustomProgressBar;
 import com.doozycod.getmaster.Model.AboutUserModel;
+import com.doozycod.getmaster.Model.LanguageModel;
+import com.doozycod.getmaster.Model.ProfileModel;
 import com.doozycod.getmaster.Model.VerificationModel;
 import com.doozycod.getmaster.R;
 import com.doozycod.getmaster.Service.ApiService;
@@ -64,6 +66,20 @@ public class AddProfilePicActivity extends AppCompatActivity {
         replaceTxt.setEnabled(false);
         customProgressBar = new CustomProgressBar(this);
 
+        if (getIntent().hasExtra("frag")) {
+            userNameTxt.setVisibility(View.VISIBLE);
+            circleImageView.setVisibility(View.VISIBLE);
+            gredient.setVisibility(View.VISIBLE);
+            selectPicButton.setEnabled(false);
+            userNameTxt.setVisibility(View.VISIBLE);
+            weTxt.setVisibility(View.GONE);
+            replaceTxt.setEnabled(true);
+            replaceTxt.setText("Replace with another");
+
+            customProgressBar.showProgress();
+            getProfileApi("6");
+        }
+
         replaceTxt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -105,6 +121,31 @@ public class AddProfilePicActivity extends AppCompatActivity {
         });
     }
 
+    private void getProfileApi(String id) {
+        apiService.getProfile(id).enqueue(new Callback<ProfileModel>() {
+            @Override
+            public void onResponse(Call<ProfileModel> call, Response<ProfileModel> response) {
+                Log.e("Get profile", "onResponse: " + response.body().getUserData().getFullName());
+
+                headerTxt.setText("Looks Great!");
+                continueButtonProfile.setText("Save");
+                continueButtonProfile.setBackgroundResource(R.drawable.continue_purple);
+                customProgressBar.hideProgress();
+                byte[] decodedString = Base64.decode(response.body().getUserData().getProfilePic().trim(), Base64.NO_WRAP);
+                Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
+                Glide.with(AddProfilePicActivity.this).load(decodedByte).into(circleImageView);
+                Glide.with(AddProfilePicActivity.this).load(decodedByte).into(selectPicButton);
+
+            }
+
+            @Override
+            public void onFailure(Call<ProfileModel> call, Throwable t) {
+                customProgressBar.hideProgress();
+                Log.e("Get Profile", "onFailure: " + t.getMessage());
+            }
+        });
+    }
+
     void uploadProfilePic(String base64Image) {
         apiService.addProfilePic(sharedPreferenceMethod.getId(), base64Image).enqueue(new Callback<VerificationModel>() {
             @Override
@@ -120,7 +161,11 @@ public class AddProfilePicActivity extends AppCompatActivity {
                 Glide.with(AddProfilePicActivity.this).load(decodedByte).into(selectPicButton);
 
 //                Toast.makeText(AddProfilePicActivity.this, "you can upload Photos soon!", Toast.LENGTH_SHORT).show();
-                startActivity(new Intent(AddProfilePicActivity.this, UploadPhotos.class));
+                if (getIntent().hasExtra("frag")) {
+
+                } else {
+                    startActivity(new Intent(AddProfilePicActivity.this, UploadPhotos.class));
+                }
                 Log.e("Get Master", "onResponse: " + response.body().getAboutUserModel().getProfilePic());
             }
 
@@ -144,6 +189,7 @@ public class AddProfilePicActivity extends AppCompatActivity {
             circleImageView.setImageURI(fileUri);
             selectPicButton.setEnabled(false);
             userNameTxt.setVisibility(View.VISIBLE);
+
             weTxt.setVisibility(View.GONE);
             replaceTxt.setEnabled(true);
             headerTxt.setText("Looks Great!");

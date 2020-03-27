@@ -14,14 +14,17 @@
 
         <ImageView
             android:id="@+id/backfragment"
-            android:layout_width="32dp"
-            android:layout_height="32dp"
-            android:layout_margin="10dp"
-            android:src="@drawable/left_arrow3x" />
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="10dp"
+            android:src="@drawable/left_arrow3x"
+            android:visibility="gone" />
 
         <ImageView
             android:layout_width="42dp"
             android:layout_height="42dp"
+            android:layout_centerVertical="true"
             android:layout_centerHorizontal="true"
             android:src="@drawable/splash_logo" />
 
@@ -30,7 +33,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
-            android:layout_margin="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_centerVertical="true"
             android:src="@drawable/menu" />
     </RelativeLayout>
 

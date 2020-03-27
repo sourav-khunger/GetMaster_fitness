@@ -4,117 +4,120 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#fff"
     android:scrollbars="none"
     tools:context=".Fragments.HomeFragment">
-<ScrollView
-    android:layout_marginBottom="5dp"
-    android:layout_above="@+id/bottomNavi"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:layout_height="match_parent"
+        android:layout_above="@+id/bottomNavi"
+        android:layout_marginBottom="5dp">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginBottom="20dp"
-            android:text="Featured People and Trainers"
-            android:textAppearance="@style/TextAppearance.AppCompat.Large"
-            android:textColor="#4A4A4A" />
-
-        <com.yarolegovich.discretescrollview.DiscreteScrollView
-            android:id="@+id/picker2"
-            android:layout_width="match_parent"
-            android:layout_height="300dp"
-            app:dsv_orientation="horizontal"
-            app:fastScrollEnabled="false" />
-
-        <androidx.cardview.widget.CardView
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="20dp"
-            app:cardCornerRadius="25dp"
-            app:cardElevation="5dp">
+            android:orientation="vertical">
 
-            <LinearLayout
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="20dp"
+                android:text="Featured People and Trainers"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:textColor="#4A4A4A" />
+
+            <com.yarolegovich.discretescrollview.DiscreteScrollView
+                android:id="@+id/picker2"
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                app:dsv_orientation="horizontal"
+                app:fastScrollEnabled="false" />
+
+            <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="20dp"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_marginBottom="10dp"
-                    android:text="Start your fitness journey. Choose the trainer or  fitness partner based on your interests"
-                    android:textAlignment="center"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Small"
-                    android:textColor="#4A4A4A" />
+                app:cardCornerRadius="25dp"
+                app:cardElevation="5dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="60dp"
-                    android:orientation="horizontal"
-                    android:weightSum="2">
+                    android:layout_height="wrap_content"
+                    android:layout_margin="20dp"
+                    android:orientation="vertical">
 
-                    <Button
-                        android:layout_width="0dp"
-                        android:layout_height="55dp"
-                        android:layout_marginRight="5dp"
-                        android:layout_weight="1"
-                        android:background="@drawable/white_bb"
-                        android:elevation="2dp"
-                        android:text="Find Partner"
-                        android:textAllCaps="false"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                        android:textColor="#000"
-                        android:textStyle="bold" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginBottom="10dp"
+                        android:text="Start your fitness journey. Choose the trainer or  fitness partner based on your interests"
+                        android:textAlignment="center"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                        android:textColor="#4A4A4A" />
 
-                    <Button
-                        android:layout_width="0dp"
-                        android:layout_height="55dp"
-                        android:layout_marginLeft="5dp"
-                        android:layout_weight="1"
-                        android:background="@drawable/purple_button"
-                        android:text="Find Trainer"
-                        android:textAllCaps="false"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                        android:textColor="#fff"
-                        android:textStyle="bold" />
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:orientation="horizontal"
+                        android:weightSum="2">
+
+                        <Button
+                            android:layout_width="0dp"
+                            android:layout_height="55dp"
+                            android:layout_marginRight="5dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/white_bb"
+                            android:elevation="2dp"
+                            android:text="Find Partner"
+                            android:textAllCaps="false"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                            android:textColor="#000"
+                            android:textStyle="bold" />
+
+                        <Button
+                            android:layout_width="0dp"
+                            android:layout_height="55dp"
+                            android:layout_marginLeft="5dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/purple_button"
+                            android:text="Find Trainer"
+                            android:textAllCaps="false"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                            android:textColor="#fff"
+                            android:textStyle="bold" />
+                    </LinearLayout>
                 </LinearLayout>
-            </LinearLayout>
 
-        </androidx.cardview.widget.CardView>
+            </androidx.cardview.widget.CardView>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_marginBottom="10dp"
-            android:text="Recently joined"
-            android:textColor="@color/blackText" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginBottom="10dp"
+                android:text="Recently joined"
+                android:textColor="@color/blackText" />
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recentUsersList"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="20dp" />
-    </LinearLayout>
-</ScrollView>
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recentUsersList"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="20dp" />
+        </LinearLayout>
+    </ScrollView>
 
     <LinearLayout
         android:id="@+id/bottomNavi"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:orientation="horizontal"
         android:gravity="center"
+        android:orientation="horizontal"
         android:padding="8dp"
         android:weightSum="4">
 
@@ -134,7 +137,8 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Home" />
+                android:text="Home"
+                android:textColor="@color/textColor" />
         </LinearLayout>
 
         <LinearLayout
@@ -157,6 +161,7 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/favoriteHomeButton"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -175,6 +180,7 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/messageHomeButton"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"

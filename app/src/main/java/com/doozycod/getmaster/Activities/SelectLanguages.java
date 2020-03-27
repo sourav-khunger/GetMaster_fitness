@@ -37,6 +37,7 @@ public class SelectLanguages extends AppCompatActivity implements InterestAdapte
     String languages;
     Button continueButtonLangButton;
     List<String> list = new ArrayList<>();
+    List<String> listPivot = new ArrayList<>();
     SharedPreferenceMethod sharedPreferenceMethod;
     ApiService apiService;
     CustomProgressBar customProgressBar;
@@ -57,6 +58,10 @@ public class SelectLanguages extends AppCompatActivity implements InterestAdapte
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         interestAdapter = new InterestAdapter(this, languageArray);
         recyclerView.setAdapter(interestAdapter);
+//        getLanguages from edit profile
+        if (getIntent().hasExtra("frag")) {
+            getLanguages("6");
+        }
         interestAdapter.setListner(this::onCheckListener);
         backBTN.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -67,10 +72,32 @@ public class SelectLanguages extends AppCompatActivity implements InterestAdapte
         continueButtonLangButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                languages = TextUtils.join(", ", list);
+                if(getIntent().hasExtra("frag")){
+                    languages = TextUtils.join(", ", listPivot);
+                }else{
+                    languages = TextUtils.join(", ", list);
+                }
                 customProgressBar.showProgress();
                 LanguageApi(languages);
                 Log.e("language", "onClick: " + languages);
+            }
+        });
+    }
+
+    private void getLanguages(String id) {
+        apiService.getLanguages(id).enqueue(new Callback<LanguageModel>() {
+            @Override
+            public void onResponse(Call<LanguageModel> call, Response<LanguageModel> response) {
+                list = response.body().getUserLanguages().getLanguages();
+                interestAdapter = new InterestAdapter(SelectLanguages.this, languageArray, list, true);
+                recyclerView.setAdapter(interestAdapter);
+                interestAdapter.setListner(SelectLanguages.this::onCheckListener);
+
+            }
+
+            @Override
+            public void onFailure(Call<LanguageModel> call, Throwable t) {
+                Log.e("Languages ", "onFailure: " + t.getMessage());
             }
         });
     }
@@ -81,7 +108,11 @@ public class SelectLanguages extends AppCompatActivity implements InterestAdapte
             public void onResponse(Call<LanguageModel> call, Response<LanguageModel> response) {
                 customProgressBar.hideProgress();
                 Log.e("Language", "onResponse: " + response.body().getUserLanguages().getResponse());
-                startActivity(new Intent(SelectLanguages.this, ProfileReady.class));
+                if (getIntent().hasExtra("frag")) {
+
+                } else {
+                    startActivity(new Intent(SelectLanguages.this, ProfileReady.class));
+                }
             }
 
             @Override
@@ -97,19 +128,34 @@ public class SelectLanguages extends AppCompatActivity implements InterestAdapte
 
     @Override
     public void onCheckListener(List<String> interest) {
-        if (interest.size() == 0) {
-//            continueButtonLangButton.setText("Finish");
-            continueButtonLangButton.setBackground(getDrawable(R.drawable.continue_grey));
-            continueButtonLangButton.setEnabled(false);
+        listPivot = interest;
 
-        }
-        if (interest.size() > 0) {
+        if (getIntent().hasExtra("frag")) {
+            if (interest.size() == 0) {
 //            continueButtonLangButton.setText("Finish");
-            continueButtonLangButton.setBackground(getDrawable(R.drawable.continue_purple));
-            continueButtonLangButton.setEnabled(true);
+                continueButtonLangButton.setBackground(getDrawable(R.drawable.continue_grey));
+                continueButtonLangButton.setEnabled(false);
 
+            } else {
+                continueButtonLangButton.setText("Update");
+                continueButtonLangButton.setBackground(getDrawable(R.drawable.continue_purple));
+                continueButtonLangButton.setEnabled(true);
+
+            }
+        } else {
+            if (interest.size() == 0) {
+//            continueButtonLangButton.setText("Finish");
+                continueButtonLangButton.setBackground(getDrawable(R.drawable.continue_grey));
+                continueButtonLangButton.setEnabled(false);
+
+            }
+            if (interest.size() > 0) {
+//            continueButtonLangButton.setText("Finish");
+                continueButtonLangButton.setBackground(getDrawable(R.drawable.continue_purple));
+                continueButtonLangButton.setEnabled(true);
+
+            }
         }
-        list = interest;
         Log.e("Interest", "onCheckListener: " + list.size());
     }
 }

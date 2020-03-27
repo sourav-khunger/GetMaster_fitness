@@ -23,11 +23,21 @@ public class InterestAdapter extends RecyclerView.Adapter<InterestAdapter.Intere
     Context context;
     String[] checkBoxes;
     List<String> selectedInterests = new ArrayList<>();
+    List<String> selectedInterestsApi = new ArrayList<>();
+
     CheckedInterest checkedInterestListener;
+    boolean isEditing;
 
     public InterestAdapter(Context context, String[] checkBoxes) {
         this.context = context;
         this.checkBoxes = checkBoxes;
+    }
+
+    public InterestAdapter(Context context, String[] checkBoxes, List<String> selectedInterestsApi, boolean isEditing) {
+        this.context = context;
+        this.checkBoxes = checkBoxes;
+        this.isEditing = isEditing;
+        this.selectedInterestsApi = selectedInterestsApi;
     }
 
     public void setListner(CheckedInterest checkedInterestListener) {
@@ -45,6 +55,15 @@ public class InterestAdapter extends RecyclerView.Adapter<InterestAdapter.Intere
     public void onBindViewHolder(@NonNull InterestAdapter.InterestHolder holder, int position) {
 
         holder.checkBoxes.setText(checkBoxes[position]);
+        if (isEditing) {
+            for (int i = 0; i < selectedInterestsApi.size(); i++) {
+                if (holder.checkBoxes.getText().equals(selectedInterestsApi.get(i))) {
+                    holder.checkBoxes.setChecked(true);
+                    selectedInterests.add(holder.checkBoxes.getText().toString());
+
+                }
+            }
+        }
         holder.checkBoxes.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
@@ -58,10 +77,15 @@ public class InterestAdapter extends RecyclerView.Adapter<InterestAdapter.Intere
                     checkedInterestListener.onCheckListener(selectedInterests);
                 }
 
-                Log.e(TAG, "onCheckedChanged: "+selectedInterests.size() );
+                Log.e(TAG, "onCheckedChanged: " + selectedInterests.size());
             }
         });
 
+    }
+
+    @Override
+    public long getItemId(int position) {
+        return super.getItemId(position);
     }
 
     @Override
@@ -78,7 +102,7 @@ public class InterestAdapter extends RecyclerView.Adapter<InterestAdapter.Intere
         }
     }
 
-   public interface CheckedInterest {
+    public interface CheckedInterest {
         void onCheckListener(List<String> interest);
     }
 }
